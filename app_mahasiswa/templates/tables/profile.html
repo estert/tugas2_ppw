@@ -1,0 +1,51 @@
+{% load staticfiles %}
+{% load static %}
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="col-lg-6 col-lg-12">
+            <table width="100%">
+                <tr>
+                    <td><h5><strong>Nama</strong></h5></td>
+                    <td><h5> : {{ nama }}</h5></td>
+                </tr>
+                <tr>
+                    <td><h5><strong>NPM</strong></h5>
+                    <td><h5> : {{ npm }}</h5></td>
+                </tr>
+                <tr>
+                    <td><h5><strong>Keahlian</strong></h5></td>
+                    <td>
+                        <div class="keahlian"> : 
+                            {% if list_keahlian %}
+                                {% for keahlian in list_keahlian %}
+                                    {% if keahlian.keahlian == 'Java' %}
+                                        <button class="btn btn btn-primary">{{ keahlian.keahlian }}</button> 
+                                    {% elif keahlian.keahlian == 'Python'%}
+                                        <button class="btn btn btn-danger">{{ keahlian.keahlian }}</button> 
+                                    {% elif keahlian.keahlian == 'C#'%}
+                                        <button class="btn btn btn-info">{{ keahlian.keahlian }}</button> 
+                                    {% elif keahlian.keahlian == 'Erlang'%}
+                                        <button class="btn btn btn-warning">{{ keahlian.keahlian }}</button> 
+                                    {% else%}
+                                        <button class="btn btn btn-success">{{ keahlian.keahlian }}</button> 
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                kosong
+                            {% endif %}
+                        </div> 
+                    </td>
+                </tr>
+                <tr>
+                    <td><h5><strong>Email</strong></h5></td>
+                    <td><h5> : {{ email }}</h5></td>
+                </tr>
+                <tr>
+                    <td><h5><strong>Profile LinkedIn</strong></h5></td>
+                    <td><h5> : {{ profile_linkedin }} </h5></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

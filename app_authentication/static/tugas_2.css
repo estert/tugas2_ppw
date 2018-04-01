@@ -1,0 +1,38 @@
+*{
+  padding: 0px;
+  margin: 0px;
+  /*font-family: 'Josefin Sans';*/
+}
+
+body{
+  background-image: url(https://i.imgur.com/ugNmG8t.png);
+  background-size: 100%;
+}
+
+
+.footer{
+  display: block;
+  text-align: center;
+}
+
+.dropdown{
+  background-color: #1c1c1c;
+  padding-top: 15px;
+  padding-right: 10px;
+  height: 60px;
+}
+
+#dropdown{
+  background-color: transparent;
+  border: none;
+}
+
+.rata-tengah {
+  text-align: center;
+  margin : 20px;
+}
+.judul {
+  text-transform:uppercase;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}

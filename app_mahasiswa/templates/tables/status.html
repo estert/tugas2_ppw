@@ -1,0 +1,44 @@
+{% load staticfiles %}
+{% load static %}
+<div class="panel panel-info">
+        <div class="panel-body">
+            <section name="input-list" id="input-list">
+                <div class="container" style="width:100%;">
+                	<form id="form" method="POST" action="{% url 'app-mahasiswa:add_status' %}">
+                        <h2>Update Status</h2>
+                        {% csrf_token %}
+                        {{ status_form }}
+                        <br>
+                        <input id="post-button" type="submit" class="btn btn-lg btn-block btn-info" value="Post">
+                    </form>
+                </div>
+            </section>
+            <section name="my-list" id="my-list">
+                <div class="container" style="width:100%;">
+                    <h2 class="my-list-title">Timeline</h2>
+                    <div class="flex">
+                    {% if model %}
+                    	{% for data in model %}
+                            <div class="flex-item status-flex">
+                                <a href="/mahasiswa/delete_status/{{ data.id }}">
+                                    <div class="delete-button" data-id={{data.id}}}>x</div>
+                                </a>
+                                <div class="postee">
+                                    <img class="img depe" src = "https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png" width="50px">
+                                    {{ data.pengguna.username }}
+                                </div>
+            				    <div class="isi-status">{{data.status}}</div>
+            				    <div class="date-added" id="date-added">{{data.created_date}}</div>
+                            </div>
+                    	{% endfor %}
+                    {% else %}
+                    <div class="alert alert-danger text-center">
+                        <strong>Oops!</strong> Tidak ada post di timeline.
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+            </section>
+        </div>
+    </div>
+

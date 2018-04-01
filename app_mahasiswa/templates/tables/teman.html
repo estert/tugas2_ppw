@@ -1,0 +1,104 @@
+{% load staticfiles %}
+
+<div class = "panel panel-default">
+    <div class = "panel-heading">
+        <table cellpadding="3" cellspacing="0" border="0" style="width: 67%; margin: 0 auto 2em auto;">
+            <thead>
+                <tr>
+                    <th class = "col-xs-1">Search</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="filter_global">
+                    <td class = "col-xs-1"><input type="text" class="global_filter" id="global_search"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+    <div class = "panel-body">
+        <table id="example" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th class="col-xs-2">NPM</th>
+                    <th class="col-xs-4">Nama</th>
+                    <th class="col-xs-2">Angkatan</th>
+                    <th class="col-xs-2">Keahlian</th>
+                    <th class="col-xs-2">Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if list_pengguna %}
+                    {% for pengguna in list_pengguna %}
+                    <tr id="filter_global">
+                        <td class="col-xs-2" id="global_npm">{{pengguna.kode_identitas}}</td>
+                        <td class="col-xs-4" id="global_nama">{{pengguna.nama}}</td>
+                        <td class="col-xs-2" id="global_angkatan">{{pengguna.angkatan}}</td>
+                    {% for skill in list_skill %}
+                        {% if pengguna == skill.pengguna %}
+                            <td class="col-xs-2" id="global_keahlian">{{skill.keahlian}}</td>
+                            <td class="col-xs-2" id="global_level">{{skill.level}}</td>
+                        {% endif %}
+                    {% endfor %}
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+   <tr id="filter_global">
+    <td class="col-xs-2" id="global_npm">16011231231</td>
+    <td class="col-xs-4" id="global_nama">Afkar S</td>
+    <td class="col-xs-2" id="global_angkatan">2016</td>
+    <td class="col-xs-2" id="global_keahlian">Java</td>
+    <td class="col-xs-2" id="global_level">Beginner</td>
+   </tr>
+   <tr id="filter_global">
+    <td class="col-xs-2" id="global_npm">16012313525</td>
+    <td class="col-xs-4" id="global_nama">Brian Estadimas</td>
+    <td class="col-xs-2" id="global_angkatan">2016</td>
+    <td class="col-xs-2" id="global_keahlian">C#</td>
+    <td class="col-xs-2" id="global_level">Advanced</td>
+   </tr>
+   <tr id="filter_global">
+    <td class="col-xs-2" id="global_npm">1701239123</td>
+    <td class="col-xs-4" id="global_nama">Reza Akbar</td>
+    <td class="col-xs-2" id="global_angkatan">2016</td>
+    <td class="col-xs-2" id="global_keahlian">Python</td>
+    <td class="col-xs-2" id="global_level">Intermediate</td>
+   </tr>
+   <tr id="filter_global">
+    <td class="col-xs-2" id="global_npm">15123141125</td>
+    <td class="col-xs-4" id="global_nama">Wigo Putera</td>
+    <td class="col-xs-2" id="global_angkatan">2015</td>
+    <td class="col-xs-2" id="global_keahlian">Kotlin</td>
+    <td class="col-xs-2" id="global_level">Legend</td>
+   </tr>
+  </tbody>
+    </table>
+ </div> 
+</div> 
+
+{% block javascript %} 
+<script>
+$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#example tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+    } );
+ 
+    // DataTable
+    var table = $('#example').DataTable();
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+} );
+</script>
+{% endblock %}

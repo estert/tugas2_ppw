@@ -1,0 +1,76 @@
+{% load staticfiles %}
+{% load static %}
+
+<div id="riwayat-big" class="panel panel-default">
+	<div class="panel-heading">
+		<table style="width: 97%; padding-left: 0px;">
+	     	<thead>
+		       <tr>
+		         <th class="col-xs-1">No</th>
+		         <th class="col-xs-4">Mata Kuliah</th>
+		         <th class="col-xs-5">Dosen Pengajar</th>
+		         <th id="nilai" class="col-xs-2">Nilai</th>
+		       </tr>
+		     </thead>
+		</table>
+   	</div>
+    <div class="panel-body">
+        <table class="table table-fixed">
+	     <tbody>
+	     	{% for matkul in list_matkul %}
+		       <tr>
+		         <td class="col-xs-1">{{ forloop.counter }}</td>
+		         <td class="col-xs-4">{{ matkul.kelas.nm_mk_cl.nm_mk }}</td>
+		         <td class="col-xs-5">{{ matkul.kelas.pengajar.0.nama }}</td>
+		         <td id="nilai" class="col-xs-2">
+		         {% if dirahasiakan == "Tidak" %}
+		         		{{ matkul.nilai }}
+		         	{% else %}
+		         		Dirahasiakan
+		         	{% endif %}
+		   	    </td>
+		       </tr>
+		     {% endfor %}
+	     </tbody>
+	   </table>
+    </div>
+</div>
+
+<div id="riwayat-medium" class="panel panel-default">
+	<div class="panel-heading">
+		<table style="width: 98%;">
+	     	<thead>
+		       <tr>
+		         <th class="col-xs-2">No</th>
+		         <th class="col-xs-8">Mata Kuliah</th>
+		         <th id="nilai" class="col-xs-2">Nilai</th>
+		       </tr>
+		     </thead>
+		</table>
+   	</div>
+    <div class="panel-body">
+        <table class="table table-fixed">
+	     <tbody>
+	     	{% for matkul in list_matkul %}
+		       <tr>
+		         <td class="col-xs-2">{{ forloop.counter }}</td>
+		         <td class="col-xs-8">{{ matkul.kelas.nm_mk_cl.nm_mk }}</td>
+		         <td id="nilai" class="col-xs-2">
+		         	{% if dirahasiakan == "Tidak" %}
+		         		{{ matkul.nilai }}
+		         	{% else %}
+		         		Dirahasiakan
+		         	{% endif %}
+		    		</td>
+		       </tr>
+		     {% endfor %}
+	     </tbody>
+	   </table>
+    </div>
+</div>
+
+<div id="riwayat-small" class="panel panel-default">
+    <div class="panel-body">
+        <h4>Maaf, Data Mata Kuliah Tidak Kompetibel Untuk Dibuka Di Resolusi Ini</h4>
+    </div>
+</div>

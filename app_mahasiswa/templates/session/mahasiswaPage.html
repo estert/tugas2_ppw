@@ -1,0 +1,60 @@
+{% extends "layout/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Content Here -->
+<!-- tulisan nama, status terakhir, dll di sini-->
+
+<h1>Selamat Datang, {{ username }}</h1>
+<div>
+    <img style="border: solid 3px white" src = "{{ foto_profil }}" alt = "profpic" width = "200px" height = "200px">
+    <h4><strong>Status Terbaru :</strong></h4>
+    <h5>{{ status}}</h5>
+</div>
+<div style="margin-top: 10px;">
+    <a href = "" class = "btn btn-primary">Lihat Forum</a> 
+    <a href = "{% url 'app-mahasiswa:edit_profile' %}" class = "btn btn-primary">Edit Profile</a> 
+</div>
+<h3> Jumlah Status : {{ jumlah_status }}</h3>
+<h3>
+    <!-- if ada status, get status terakhir pake filter(-date) < cek status di tugas1
+        kalo ga ada tinggal taro tidak ada status
+     -->
+</h3>
+
+
+<!-- logout sementara -->
+<a href="{% url 'app-auth:auth_logout' %}" class="btn btn-danger pull-right" onclick="return confirm('Keluar?')">Logout </a>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+            <a href="#profile" aria-controls="home" role="tab" data-toggle="tab"> Profile </a>
+        </li>
+        <li role="presentation">
+            <a href="#riwayat" aria-controls="settings" role="tab" data-toggle="tab"> Riwayat </a>
+        </li>
+        <li role="presentation">
+            <a href="#status" aria-controls="settings" role="tab" data-toggle="tab"> Status </a>
+        </li>
+        <li role="presentation">
+            <a href="#teman" aria-controls="settings" role="tab" data-toggle="tab"> Teman </a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="profile">
+            {% include 'tables/profile.html' %}
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="riwayat">
+            {% include 'tables/riwayat.html' %}
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="status">
+            {% include 'tables/status.html' %}
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="teman">
+            {% include 'tables/teman.html' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

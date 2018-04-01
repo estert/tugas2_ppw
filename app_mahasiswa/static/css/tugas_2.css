@@ -1,0 +1,126 @@
+*{
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Josefin Sans';
+}
+
+html{
+    height: 100%;
+}
+
+body{
+  min-height: 100%;
+  padding-bottom: 6rem;
+  width: 100vw;
+  background: url(https://i.imgur.com/SffK3sS.png) center center fixed;
+  position: relative;
+  background-size: cover;
+}
+
+/*Halaman Untuk Memilih Opsi Login*/
+.login-option {
+  margin-top: 8vh;
+}
+
+/*Halaman Login Mahasiswa*/
+.login-sso {
+  margin-top: 8vh;
+}
+
+.rata-tengah { 
+  padding-top: 5px;
+  padding-bottom: 30px;
+  border: 2px;
+  border-radius: 10px 10px 10px 10px;
+  text-align: center;
+  margin : 20px;
+  background: rgba(143, 199, 74, 0.4);
+}
+
+.judul {
+  border-radius: 10px 10px 0px 0px;
+  background: rgba(143, 199, 74, 1);
+  margin-bottom: 50px;
+  margin-top: -6px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+/*Halaman HTML Riwayat*/
+#riwayat-big {
+  display: block;
+}
+
+#riwayat-medium {
+  display: none;
+}
+
+#riwayat-small {
+  display: none;
+}
+
+@media only screen and (max-width: 1023px) {
+  #riwayat-big {
+    display: none;
+  }
+
+  #riwayat-medium {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 424px) {
+  #riwayat-big {
+    display: none;
+  }
+
+  #riwayat-medium {
+    display: none;
+  }
+
+  #riwayat-small {
+    display: block;
+  }
+
+  .keahlian {
+    display: flex;
+  }
+}
+
+}
+
+.table-fixed thead {
+  width: 100%;
+}
+.table-fixed tbody {
+  height: 114px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+}
+.table-fixed tbody td, .table-fixed thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}
+
+.keahlian {
+  display: inline-block;
+}
+
+.keahlian button {
+  margin-bottom: 5px;
+}
+
+/*Block Footer*/
+.footer{
+    text-align: center;
+    color: white;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    position: absolute;
+    width: 100%;
+}

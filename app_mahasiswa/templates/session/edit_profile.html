@@ -1,0 +1,100 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+
+<div class = "container" style = "padding-top: 20px;">
+    <div class = "header-html" align = "center">
+        <div class = "temp-foto">
+            <img src = "{{ foto_profil }}" alt = "profpic" width = "125px" height = "125px">
+        </div>
+        <div>{{ npm }}</div>
+    </div>
+    <div class = "edit-content-html">
+        <h4 class = "some-words"><strong>Data Pribadi</strong></h4>
+        <div class = "linked-in-data-content">
+            {% if profile_linkedin == 'kosong' %}
+                <script type="in/Login"></script>
+            {% endif %}
+            <div class = "data-pribadi">
+                <div class = "nama data">
+                    {% if nama != 'kosong' %}
+                        {{ nama }}
+                    {% endif %}
+                </div>
+                <div class = "email data">
+                    {% if email != 'kosong' %}
+                        {{ email }}
+                    {% endif %}
+                </div>
+                <a class = "profile-linkedin data">
+                    {% if profile_linkedin != 'kosong' %}
+                        haha
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+        <br>
+        <div class = "keahlian-content" style = "width:90%;">
+            <h4>Keahlian</h4>
+            {% if list_keahlian %}
+                {% for keahlian in list_keahlian %}
+                    <div class = "keahlian-lama">{{ forloop.counter }} &nbsp;&nbsp;&nbsp;&nbsp;
+                    <select class = "select-keahlian" data-id = "{{ keahlian.id }}" >
+                            <option value="{{keahlian.keahlian}}">{{keahlian.keahlian}}</option>
+                            <option value="0">Java</option>
+                            <option value="1">C#</option>
+                            <option value="2" >Python</option>
+                            <option value="3">Erlang</option>
+                            <option value="4">Kotlin</option>
+                        </select>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <select class = "select-level" data-id = "{{ keahlian.id }}">
+                            <option value="{{keahlian.level}}">{{keahlian.level}}</option>
+                            <option value="0">Beginner</option>
+                            <option value="1">Intermediate</option>
+                            <option value="2">Advanced</option>
+                            <option value="3">Expert</option>
+                            <option value="4">Legend</option>
+                        </select>
+                        <button class = "btn btn-danger delete-button"  data-id = "{{ keahlian.id }}">Delete Keahlian</button>
+                    </div>
+                    <br>
+                {% endfor %}
+            {% endif %}
+            <div class = "keahlian-baru" >
+                {{ list_keahlian | length | add:1}} &nbsp;&nbsp;&nbsp;&nbsp;
+                <select class = "select-keahlian skill-baru" data-id = "{{ forloop.counter }}">
+                    <option value="0" selected>Java</option>
+                    <option value="1">C#</option>
+                    <option value="2" >Python</option>
+                    <option value="3">Erlang</option>
+                    <option value="4">Kotlin</option>
+                </select>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <select class = "select-level level-baru">
+                    <option value="0" selected>Beginner</option>
+                    <option value="1">Intermediate</option>
+                    <option value="2" >Advanced</option>
+                    <option value="3">Expert</option>
+                    <option value="4">Legend</option></select>
+                <button class = "btn btn-primary apply-button" onClick="addKeahlian()">Tambah Keahlian</button>
+            </div>
+        </div>
+        <br>
+        <div class = "form-kerahasiaan-nilai">
+            <h4>Tampilkan Nilai</h4>
+            <form>
+                <input type="radio" name="bool" value="Tidak" checked>Tidak
+                <input type="radio" name="bool" value="Ya">Ya
+            </form>
+        </div>       
+    </div>
+
+    <div class = "saving-data" align = "center">
+        <button class = "btn btn-primary save-button">Simpan</button>
+        <button class = "btn btn-danger exit-button">Keluar</button>
+    </div>
+    <br>
+</div>
+
+{% endblock %}

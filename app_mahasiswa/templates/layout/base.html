@@ -1,0 +1,71 @@
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="TUGAS 2">
+    <meta name="author" content="{{author}}">
+    <link rel="shortcut icon" href="https://imageshack.com/i/pm9UQs5Cp">
+    <!-- bootstrap csss -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- css kelompok -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../../static/css/tugas_2.css" >
+    <title>
+        {% block title %} Tugas 2 {{author}} {% endblock %}
+    </title>
+    <script type="text/javascript" src="//platform.linkedin.com/in.js">
+        api_key: 81l5skwi6v6pgb
+        authorize: true
+        onLoad: onLinkedInLoad
+        scope: r_basicprofile r_emailaddress
+    </script>
+</head>
+<body>
+<header>
+    <!-- Your Header Here -->
+    {% include "partials/header.html" %}
+</header>
+<content>
+    <div class="container">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert" id="django-messages">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin-right: 15px;">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+        </div>
+        {% endfor %}
+
+        {% block content %}
+        <!-- Your Content Here -->
+        {% endblock %}
+    </div>
+</content>
+<footer>
+    {% block footer %}
+    <!-- Your Footer Here -->
+    {% include "partials/footer.html" %}
+    {% endblock %}
+</footer>
+
+<!-- Jquery n Bootstrap Script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<!-- script tugas -->
+<script src="{% static 'js/profile.js' %}"></script>
+<script src="{% static 'js/riwayat.js' %}"></script>
+<script src="{% static 'js/status.js' %}"></script>
+<script src="{% static 'js/teman.js' %}"></script>
+{% block javascript %}
+
+{% endblock %}
+</body>
+</html>

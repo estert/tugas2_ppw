@@ -1,0 +1,58 @@
+*{
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Josefin Sans';
+}
+
+body{
+  background: url(https://i.imgur.com/SffK3sS.png) center center fixed;
+  position: relative;
+  background-size: 100%;
+}
+
+.footer{
+  position: static; 
+  text-align: center;
+}
+
+.dropdown{
+  background-color: #1c1c1c;
+  padding-top: 15px;
+  padding-right: 10px;
+  height: 60px;
+}
+
+#dropdown{
+  background-color: transparent;
+  border: none;
+}
+
+.rata-tengah {
+  text-align: center;
+  margin : 20px;
+}
+.judul {
+  text-transform: uppercase;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.keahlian {
+  display: inline-block;
+}
+
+.table-fixed thead {
+  width: 100%;
+}
+.table-fixed tbody {
+  height: 114px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+}
+.table-fixed tbody td, .table-fixed thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}
